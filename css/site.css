@@ -523,3 +523,28 @@ html:not(.anim) .manifest__p .w{color:var(--tinta)}
 
 .cap__tab b{font-size:clamp(3.2rem,6vw,5.6rem)}
 .cap__txt h3 small{font-size:.55em;letter-spacing:.08em;opacity:.65;font-weight:400}
+
+/* Apartamentos: las 4 capacidades a la vista, sin pestañas */
+.cap{display:block!important}
+.apgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2vw,1.6rem)}
+.apcard__img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:999px 999px var(--r) var(--r)}
+.apcard__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+.apcard:hover .apcard__img img{transform:scale(1.06)}
+.apcard__n{position:absolute;left:1rem;bottom:1rem;display:flex;align-items:baseline;gap:.4rem;background:var(--cal,#f4efe6);color:var(--tinta);padding:.35rem .9rem .45rem;border-radius:99px;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+.apcard__n b{font-family:var(--f-display);font-size:2rem;font-weight:400;letter-spacing:-.03em;color:var(--teja);text-transform:none}
+.apcard__txt h3{font-family:var(--f-display);font-weight:400;font-size:1.6rem;margin:1.2rem 0 .5rem}
+.apcard__txt p{color:var(--muted);font-size:.95rem;line-height:1.6;margin:0}
+@media(max-width:1000px){.apgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.apgrid{grid-template-columns:1fr}}
+
+/* Por dentro: se mueve sola en bucle, se para al pasar el ratón */
+.hstrip{height:auto!important;margin-top:clamp(3rem,7vw,6rem)}
+.hstrip__sticky{position:relative!important;height:auto!important;overflow:hidden;padding:0 0 2rem}
+.hstrip__track{transform:none;animation:none;overflow:visible!important;scroll-snap-type:none!important}
+.hstrip__progress{display:none}
+.hcard img{height:clamp(280px,48vh,520px)!important;aspect-ratio:auto!important}
+.hcard,.hcard--w{width:auto!important}
+.hcard img{width:auto!important;max-width:none}
+
+/* Spa: fotos sin zoom excesivo */
+.scard__img{aspect-ratio:4/3!important;border-radius:var(--r)!important}

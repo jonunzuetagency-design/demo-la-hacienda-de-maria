@@ -125,7 +125,7 @@
 
   /* ---------- Tira horizontal (sticky + translate) ---------- */
   var hs = $('#hstrip'), track = $('#htrack'), hbar = $('#hbar'), hsW = 0, isDesk = false;
-  function sizeStrip() {
+  function sizeStrip() { return;
     isDesk = innerWidth > 860 && !reduce;
     if (!hs) return;
     if (isDesk) {
@@ -134,7 +134,7 @@
       hs.style.height = (hsW + innerHeight) + 'px';
     } else { hs.style.height = ''; hsW = 0; }
   }
-  if (track && !isDesk) {
+  if (false) {
     track.addEventListener('scroll', function () {
       if (isDesk) return;
       var m = track.scrollWidth - track.clientWidth;
@@ -193,8 +193,8 @@
         setMat(best);
       }
 
-      // tira horizontal
-      if (hs && isDesk && hsW > 0) {
+      // tira horizontal (desactivada: ahora es una cinta automática)
+      if (false) {
         var hr = rect(hs), hp = clamp(-hr.top / hsW, 0, 1);
         track.style.transform = 'translate3d(' + (-hp * hsW).toFixed(1) + 'px,0,0)';
         hbar.style.transform = 'scaleX(' + hp.toFixed(4) + ')';
@@ -387,4 +387,19 @@
       }
     });
   });
+})();
+
+/* Cinta automática de "Por dentro" */
+(function () {
+  var tr = document.getElementById('htrack'); if (!tr) return;
+  var intro = tr.querySelector('.hstrip__intro'); if (intro) { tr.parentNode.insertBefore(intro, tr); intro.style.cssText = 'width:auto;padding:0 var(--gut) 2rem;max-width:44rem'; }
+  tr.innerHTML += tr.innerHTML;
+  var x = 0, hover = false, half = 0;
+  var m = function () { half = tr.scrollWidth / 2; }; addEventListener('load', m); addEventListener('resize', m); m();
+  tr.addEventListener('mouseenter', function () { hover = true; }); tr.addEventListener('mouseleave', function () { hover = false; });
+  var sx = null, s0 = 0;
+  tr.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; s0 = x; hover = true; }, { passive: true });
+  tr.addEventListener('touchmove', function (e) { if (sx !== null) x = s0 - (e.touches[0].clientX - sx); }, { passive: true });
+  tr.addEventListener('touchend', function () { sx = null; hover = false; });
+  (function f() { if (!hover) x += .5; if (half) { if (x >= half) x -= half; if (x < 0) x += half; } tr.style.transform = 'translate3d(' + (-x) + 'px,0,0)'; requestAnimationFrame(f); })();
 })();
