@@ -31,7 +31,7 @@
 .g-end__ctas{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap;justify-content:center}
 
 /* Visor */
-.lb{position:fixed;inset:0;z-index:100;background:rgba(20,14,10,.97);color:var(--cal);display:grid;grid-template-rows:auto 1fr auto;clip-path:inset(50% 0 50% 0);transition:clip-path .7s var(--ease)}
+.lb{position:fixed;inset:0;z-index:100;background:#140E0A;color:var(--cal);display:grid;grid-template-rows:auto 1fr auto;clip-path:inset(50% 0 50% 0);transition:clip-path .7s var(--ease)}
 .lb.open{clip-path:inset(0 0 0 0)}
 .lb[hidden]{display:none}
 .lb__bar{display:flex;justify-content:space-between;align-items:center;padding:1rem var(--gut)}
