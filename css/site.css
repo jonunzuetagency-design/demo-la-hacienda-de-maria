@@ -520,3 +520,6 @@ html:not(.anim) .manifest__p .w{color:var(--tinta)}
   .spa__iris-sticky{position:relative;height:70vh}
   .spa__iris-sticky img{clip-path:none;transform:none}
 }
+
+.cap__tab b{font-size:clamp(3.2rem,6vw,5.6rem)}
+.cap__txt h3 small{font-size:.55em;letter-spacing:.08em;opacity:.65;font-weight:400}
